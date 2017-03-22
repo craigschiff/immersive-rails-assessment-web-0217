@@ -1,0 +1,17 @@
+<h4><%= "#{@guest.name}'s Details" %></h4>
+
+
+<label>Name: </label>
+<%= @guest.name %><br />
+<label>Occupation: </label>
+<%= @guest.occupation %><br />
+
+<label>Appearances: </label>
+<% if !@episodes.empty? %>
+<% @episodes.each do |episode| %>
+<%= link_to episode.date, episode_path(episode) %>
+<% end %>
+<% else %>
+<%= "No appearances have been logged. Create one?" %>
+<%= link_to "New Appearance", guest_new_appearance_path(@guest) %>
+<% end %>

@@ -1,0 +1,14 @@
+<h4><%= "Create a new appearance for #{@guest.name}" %></h4>
+
+<%= form_tag("/appearances/guests/#{@guest.id}") do %>
+<% Episode.all.each do |episode| %>
+<%= radio_button_tag "episode", episode.id  %>
+<label><%= "#{episode.date.strftime("%B %d, %Y")}" %></label><br />
+<% end %>
+<label>Please select rating below: </label>
+<% @ratings.each do |rating| %>
+<%= radio_button_tag "rating", rating  %>
+<%= label_tag rating %>
+<% end %>
+<%= submit_tag %>
+<% end %>

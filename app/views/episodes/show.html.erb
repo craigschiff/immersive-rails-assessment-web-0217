@@ -1,0 +1,21 @@
+<h4><%= @episode.date %></h4>
+
+
+<label>Show number: </label>
+<%= @episode.number %><br /><br />
+<label>Guests: </label>
+<% if !@appearances.empty? %>
+<% @appearances.each do |appearance| %>
+<label>Name: </label>
+<%= appearance.guest.name %><br />
+<label>Rating: </label>
+<%= appearance.rating %>
+<label>More details about guest: </label>
+<%= link_to "More Details", guest_path(appearance.guest) %><br />
+<% end %>
+<%= link_to "Add Guests", episode_new_appearance_path(@episode) %>
+
+<% else %>
+<%= "No Guests have been logged yet. Add them?" %>
+<%= link_to "Add Guests", episode_new_appearance_path(@episode) %>
+<% end %>

@@ -1,0 +1,14 @@
+<h4><%= "Find Guest that appeared on #{@episode.date.strftime("%B %d, %Y")}" %></h4>
+
+<%= form_tag("/appearances/episodes/#{@episode.id}") do %>
+<% Guest.all.each do |guest| %>
+<%= radio_button_tag "guest", guest.id  %>
+<label><%= "#{guest.name}" %></label><br />
+<% end %>
+<label>Please select rating below: </label>
+<% @ratings.each do |rating| %>
+<%= radio_button_tag "rating", rating  %>
+<%= label_tag rating %>
+<% end %>
+<%= submit_tag %>
+<% end %>
